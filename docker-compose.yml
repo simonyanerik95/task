@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./logs:/logs
+    command: sh -c 'python /worker/worker.py >> /logs/worker.log 2>&1'
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    depends_on:
+      - worker
+    ports:
+      - "5000:5000"

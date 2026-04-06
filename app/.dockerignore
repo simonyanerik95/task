@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.tar
+*.log
+
+.git/
+.github/
+.vscode/
+.idea/
+
+docker-compose.yml
